@@ -1,0 +1,16 @@
+<package format="2">
+  <name>cram_pepper_description</name>
+  <version>0.7.0</version>
+  <description>
+    Prolog predicates describing pepper robot
+  </description>
+  <author>Derrick Odonkor</author>
+  <maintainer email="odonkor.derrick@gmail.com">Derrick Odonkor</maintainer>
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>cram_prolog</depend>
+  <depend>cram_robot_interfaces</depend>
+  <depend>cram_location_costmap</depend>
+</package>
