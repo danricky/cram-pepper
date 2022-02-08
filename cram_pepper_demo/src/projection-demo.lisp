@@ -1,8 +1,8 @@
-(in-package :demo)
+(in-package :pepper-demo)
 
 ;; Menu functions start
 (defun menu-one()
-	(princ "Hello my name is pepper and how may I help you?
+ (princ "Hello my name is Pepper. How may I help you?
 		Please use the number corresponding to your request.
 
 		------Select a number-----
@@ -29,11 +29,11 @@
 			(?productposelist nil))
 		(setf response (read t))
 
-		;;first conditional statement start
+		;; first conditional statement start
 		(cond ((= response 1)
 				(menu-two)
 
-			;;second conditional statement start
+			;; second conditional statement start
 			(setf proresponse (read t))
 			(cond ((= proresponse 1)
 				(setf ?productname 'cereal)
@@ -44,10 +44,8 @@
 				(setf ?productposelist (get-shelf-pose ?productname))
 				(format t "Alright. Please follow me!"))
 			)
-			;;second conditional statement end
-			
-			(print ?productname)
-			(print ?productposelist)
+			;; second conditional statement end
+
 			(demo-one ?productname ?productposelist)
 
 			)
@@ -55,61 +53,52 @@
 				(format t "That's nice of you. Thanks!"))
 			);;first conditional statement end
 
-	) ;;let close brackets
- ) ;;interaction close brackets
-
+	) ;; let* close brackets
+ ) ;; interaction close brackets
 
 ;; Demo one
 (defun demo-one(?product-name ?shelf-pose-lists)
 	(cram-urdf-projection:with-simulated-robot
 
-
-        ;;function details
+		;; function details
         (let*  ((shelf-pose-lists-copy ?shelf-pose-lists)
 				(product-name-copy ?product-name)
 				(product-pose nil)
 				(found nil))
 
-        ;;;expression
+        ;; expression
 		(dolist (?shelf-pose shelf-pose-lists-copy)	
 
 			(setf product-pose (generate-robot-pose ?shelf-pose))
 
 			(cpl:with-retry-counters ((error-counter 2))
 				(cpl:with-failure-handling
-		
+
 					((cram-common-failures:navigation-pose-unreachable (e)
-		
-		
+
 						(roslisp:ros-warn (navigation-failure) "~a~%
 							Could not move to location...retrying" e)
-		
+
 						(cpl:do-retry error-counter
-		
+
 							(setf product-pose (generate-robot-pose ?shelf-pose))
-		
+
 							(cpl:retry))
 						(return)))
-		
-		
-					(move-to-location product-pose)))
 
+					(move-to-location product-pose)))
 			;; Finding product
 			(setf found (find-product product-name-copy ?shelf-pose))
-
 			(if (not (null found))
 				(progn
-				(point-front-right)
-				(move-human-to-location)
-				(format t "There is your product!")
-			(return))
+					(point-front-right)
+					(move-human-to-location)
+					(format t "There is your product!")
+				(return))
 				(progn
-				(move-human-to-location)			
-				(format t "Sorry I could not find your product! However, 
-		 			I believe it is supposed to be in this area of the shelf.")))
+					(move-human-to-location)			
+					(format t "Sorry I could not find your product! However, 
+						I believe it is supposed to be in this area of the shelf.")))
 
-		
-			)) ;;endof let* and dolist
-
-	
+			)) ;; endof let* and dolist
 	))

@@ -1,6 +1,5 @@
 (in-package :pepper-descr)
 
-
 (defparameter *standard-to-pepper-gripper-transform*
   (cl-transforms-stamped:make-identity-transform))
 
@@ -48,62 +47,62 @@
                                 standard-to-particular-gripper-transform
                                 robot-joint-states)
 
-  (<- (end-effector-link pepper :left "LThumb1_link"))
-  (<- (end-effector-link pepper :right "RThumb1_link"))
+  (<- (end-effector-link :JULIETTEY20MP :left "LThumb1_link"))
+  (<- (end-effector-link :JULIETTEY20MP :right "RThumb1_link"))
+ 
+  (<- (robot-tool-frame :JULIETTEY20MP :left "LThumb1"))
+  (<- (robot-tool-frame :JULIETTEY20MP :right "RThumb1"))
+ 
+  (<- (arm-joints :JULIETTEY20MP :left ("LShoulderPitch"
+                                        "LShoulderRoll"
+                                        "LElbowYaw"
+                                        "LElbowRoll"
+                                        "LWristYaw")))
+  (<- (arm-joints :JULIETTEY20MP :right ("RShoulderPitch"
+                                        "RShoulderRoll"
+                                        "RElbowYaw"
+                                        "RElbowRoll"
+                                        "RWristYaw")))
 
-  (<- (robot-tool-frame pepper :left "LThumb1"))
-  (<- (robot-tool-frame pepper :right "RThumb1"))
+  (<- (arm-links :JULIETTEY20MP :left ("LShoulder"
+                                      "LBicep"
+                                      "LElbow"
+                                      "LForeArm"
+                                      "l_wrist")))
+  (<- (arm-links :JULIETTEY20MP :right ("RShoulder"
+                                        "RBicep"
+                                        "RElbow"
+                                        "RForeArm"
+                                        "r_wrist")))
 
-  (<- (arm-joints pepper :left ("LShoulderPitch"
-                              "LShoulderRoll"
-                              "LElbowYaw"
-                              "LElbowRoll"
-                              "LWristYaw")))
-  (<- (arm-joints pepper :right ("RShoulderPitch"
-                              "RShoulderRoll"
-                              "RElbowYaw"
-                              "RElbowRoll"
-                              "RWristYaw")))
+  (<- (gripper-joint :JULIETTEY20MP :left "left_gripper_joint"))
+  (<- (gripper-joint :JULIETTEY20MP :right "right_gripper_joint"))
 
-  (<- (arm-links pepper :left ("LShoulder"
-                             "LBicep"
-                             "LElbow"
-                             "LForeArm"
-                             "l_wrist")))
-  (<- (arm-links pepper :right ("RShoulder"
-                             "RBicep"
-                             "RElbow"
-                             "RForeArm"
-                             "r_wrist")))
-
-  (<- (gripper-joint pepper :left "left_gripper_joint"))
-  (<- (gripper-joint pepper :right "right_gripper_joint"))
-
-  (<- (gripper-link pepper :left ?link)
+  (<- (gripper-link :JULIETTEY20MP :left ?link)
     (bound ?link)
     (lisp-fun search "left_gripper" ?link ?pos)
     (lisp-pred identity ?pos))
-  (<- (gripper-link pepper :right ?link)
+  (<- (gripper-link :JULIETTEY20MP :right ?link)
     (bound ?link)
     (lisp-fun search "right_gripper" ?link ?pos)
     (lisp-pred identity ?pos))
 
-  (<- (gripper-meter-to-joint-multiplier pepper 1.0))
+  (<- (gripper-meter-to-joint-multiplier :JULIETTEY20MP 1.0))
 
-  (<- (standard-to-particular-gripper-transform pepper ?transform)
+  (<- (standard-to-particular-gripper-transform :JULIETTEY20MP ?transform)
     (symbol-value *standard-to-pepper-gripper-transform* ?transform))
 
-  (<- (robot-joint-states pepper :arm :left :point ?joint-states)
+  (<- (robot-joint-states :JULIETTEY20MP :arm :left :point ?joint-states)
     (symbol-value *left-pointing-joint-states* ?joint-states))
 
-  (<- (robot-joint-states pepper :arm :right :point ?joint-states)
+  (<- (robot-joint-states :JULIETTEY20MP :arm :right :point ?joint-states)
     (symbol-value *right-pointing-joint-states* ?joint-states))
 
-  (<- (robot-joint-states pepper :arm :right :point-ahead ?joint-states)
+  (<- (robot-joint-states :JULIETTEY20MP :arm :right :point-ahead ?joint-states)
     (symbol-value *straight-pointing-joint-states* ?joint-states))
 
-  (<- (robot-joint-states pepper :arm :left :park ?joint-states)
+  (<- (robot-joint-states :JULIETTEY20MP :arm :left :park ?joint-states)
     (symbol-value *left-parking-joint-states* ?joint-states))
 
-  (<- (robot-joint-states pepper :arm :right :park ?joint-states)
+  (<- (robot-joint-states :JULIETTEY20MP :arm :right :park ?joint-states)
     (symbol-value *right-parking-joint-states* ?joint-states)))

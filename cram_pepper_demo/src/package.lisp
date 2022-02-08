@@ -4,5 +4,5 @@
   (:nicknames #:demo)
   (:use #:common-lisp #:cram-prolog
         #:desig #:exe)
-  (:export #:pepper-demo))
+  (:export #:JULIETTEY20MP))
 
