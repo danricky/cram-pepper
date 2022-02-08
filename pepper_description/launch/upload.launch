@@ -6,6 +6,7 @@
 
   <param name="robot_description" textfile="$(find pepper_description)/urdf/pepper.urdf" />
   <param name="shelf_description" command="$(find xacro)/xacro --inorder '$(find pepper_description)/urdf/dm_shelves.urdf.xacro'" />
+  <param name="kitchen_description" command="$(find xacro)/xacro --inorder '$(find pepper_description)/urdf/dm_shelves.urdf.xacro'" />
 
   <param name="use_gui" value="$(arg gui)"/>
   
@@ -14,8 +15,8 @@
       <remap from="robot_description" to="shelf_description"/>
   </node>
   
-  <node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher" />
-  <node pkg="robot_state_publisher" type="state_publisher" name="shelf_tf_state_publisher">
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="shelf_tf_state_publisher">
     <param name="publish_frequency" value="25"/>
     <remap from="robot_description" to="shelf_description" />
   </node>

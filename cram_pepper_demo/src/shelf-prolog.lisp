@@ -1,4 +1,4 @@
-(in-package :demo)
+(in-package :pepper-demo)
 
 (def-fact-group product-type-predicates () 
 
@@ -56,12 +56,10 @@
 
   (<- (is-on milk shelf-one-level-4))
   (<- (is-on milk shelf-two-level-4))
-  
+
   (<- (is-on bowl shelf-two-level-1))
 
   (<- (is-on denkmit shelf-two-level-2))) 
-
-
 
 (def-fact-group shelf-location-predicates () 
 
@@ -82,26 +80,26 @@
   (<- (shelfs shelf-two-level-4))
   (<- (shelfs shelf-two-level-5))
 
-  (<- (location :|KITCHEN.shelf_1_level_1_link|))
-  (<- (location :|KITCHEN.shelf_1_level_2_link|))
-  (<- (location :|KITCHEN.shelf_1_level_3_link|))
-  (<- (location :|KITCHEN.shelf_1_level_4_link|))
-  (<- (location :|KITCHEN.shelf_1_level_5_link|))          
+  (<- (location :|DM-SHELVES.shelf_1_level_1_link|))
+  (<- (location :|DM-SHELVES.shelf_1_level_2_link|))
+  (<- (location :|DM-SHELVES.shelf_1_level_3_link|))
+  (<- (location :|DM-SHELVES.shelf_1_level_4_link|))
+  (<- (location :|DM-SHELVES.shelf_1_level_5_link|))          
 
-  (<- (location :|KITCHEN.shelf_2_level_1_link|))
-  (<- (location :|KITCHEN.shelf_2_level_2_link|))
-  (<- (location :|KITCHEN.shelf_2_level_3_link|))
-  (<- (location :|KITCHEN.shelf_2_level_4_link|))
-  (<- (location :|KITCHEN.shelf_2_level_5_link|)) 
+  (<- (location :|DM-SHELVES.shelf_2_level_1_link|))
+  (<- (location :|DM-SHELVES.shelf_2_level_2_link|))
+  (<- (location :|DM-SHELVES.shelf_2_level_3_link|))
+  (<- (location :|DM-SHELVES.shelf_2_level_4_link|))
+  (<- (location :|DM-SHELVES.shelf_2_level_5_link|)) 
 
-  (<- (is-at shelf-one-level-1 :|KITCHEN.shelf_1_level_1_link| ))
-  (<- (is-at shelf-one-level-2 :|KITCHEN.shelf_1_level_2_link| ))
-  (<- (is-at shelf-one-level-3 :|KITCHEN.shelf_1_level_3_link| ))
-  (<- (is-at shelf-one-level-4 :|KITCHEN.shelf_1_level_4_link| ))
-  (<- (is-at shelf-one-level-5 :|KITCHEN.shelf_1_level_5_link| ))
+  (<- (is-at shelf-one-level-1 :|DM-SHELVES.shelf_1_level_1_link| ))
+  (<- (is-at shelf-one-level-2 :|DM-SHELVES.shelf_1_level_2_link| ))
+  (<- (is-at shelf-one-level-3 :|DM-SHELVES.shelf_1_level_3_link| ))
+  (<- (is-at shelf-one-level-4 :|DM-SHELVES.shelf_1_level_4_link| ))
+  (<- (is-at shelf-one-level-5 :|DM-SHELVES.shelf_1_level_5_link| ))
 
-  (<- (is-at shelf-two-level-1 :|KITCHEN.shelf_2_level_1_link| ))
-  (<- (is-at shelf-two-level-2 :|KITCHEN.shelf_2_level_2_link| ))
-  (<- (is-at shelf-two-level-3 :|KITCHEN.shelf_2_level_3_link| ))
-  (<- (is-at shelf-two-level-4 :|KITCHEN.shelf_2_level_4_link| )) 
-  (<- (is-at shelf-two-level-5 :|KITCHEN.shelf_2_level_5_link| ))) 
+  (<- (is-at shelf-two-level-1 :|DM-SHELVES.shelf_2_level_1_link| ))
+  (<- (is-at shelf-two-level-2 :|DM-SHELVES.shelf_2_level_2_link| ))
+  (<- (is-at shelf-two-level-3 :|DM-SHELVES.shelf_2_level_3_link| ))
+  (<- (is-at shelf-two-level-4 :|DM-SHELVES.shelf_2_level_4_link| )) 
+  (<- (is-at shelf-two-level-5 :|DM-SHELVES.shelf_2_level_5_link| ))) 

@@ -7,20 +7,20 @@
                                camera-frame
                                camera-minimal-height
                                camera-maximal-height)
-  (<- (robot pepper))
+  (<- (robot :JULIETTEY20MP))
 
-  (<- (robot-odom-frame pepper "odom"))
+  (<- (robot-odom-frame :JULIETTEY20MP "odom"))
 
-  (<- (robot-base-frame pepper "base_link"))
-  (<- (robot-torso-link-joint pepper "torse" "base_link_fixedjoint"))
+  (<- (robot-base-frame :JULIETTEY20MP "base_link"))
+  (<- (robot-torso-link-joint :JULIETTEY20MP "torso" "base_link_fixedjoint"))
 
-  (<- (arm pepper :left))
-  (<- (arm pepper :right))
+  (<- (arm :JULIETTEY20MP :left))
+  (<- (arm :JULIETTEY20MP :right))
 
-  (<- (camera-frame pepper "CameraDepth_optical_frame"))
+  (<- (camera-frame :JULIETTEY20MP "CameraDepth_optical_frame"))
 
-  (<- (camera-minimal-height pepper 1.00))
-  (<- (camera-maximal-height pepper 1.10))
+  (<- (camera-minimal-height :JULIETTEY20MP 1.00))
+  (<- (camera-maximal-height :JULIETTEY20MP 1.10))
   )
   
 
@@ -43,6 +43,6 @@
     (<- (costmap:costmap-manipulation-padding 0.4))
     (<- (costmap:costmap-in-reach-distance 0.7))
     (<- (costmap:costmap-reach-minimal-distance 0.2))
-    (<- (costmap:visibility-costmap-size 2))
+    (<- (costmap:visibility-costmap-size :JULIETTEY20MP 2))
     (<- (costmap:orientation-samples 2))
     (<- (costmap:orientation-sample-step 0.1)))

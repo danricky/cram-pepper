@@ -1,36 +1,30 @@
-(in-package :demo)
+(in-package :pepper-demo)
 
-;;Global variables
-(defparameter *shelfoneOffset* 
-	(cl-tf:make-transform (cl-tf:make-3d-vector 0.0 -0.33 0.05) (cl-tf:make-quaternion 0 0 0 1)))
-
-(defparameter *shelftwoOffset* 
-	(cl-tf:make-transform (cl-tf:make-3d-vector 0.0 -0.25 0.1) (cl-tf:make-quaternion 0 0 0 1)))
-
-
+;; Global variables
 (defparameter *look-center* nil)
 (defparameter *look-right* nil)
 (defparameter *look-left* nil)
 
+(defparameter *shelf-one-offset* 
+	(cl-tf:make-transform (cl-tf:make-3d-vector 0.0 -0.33 0.05) (cl-tf:make-quaternion 0 0 0 1)))
+
+(defparameter *shelf-two-offset* 
+	(cl-tf:make-transform (cl-tf:make-3d-vector 0.0 -0.25 0.1) (cl-tf:make-quaternion 0 0 0 1)))
 
 (defparameter *right-offset* 
 	(cl-tf:make-transform (cl-tf:make-3d-vector 0.3 0.0 0.05) (cl-tf:make-quaternion 0 0 0 1)))
-
+ 
 (defparameter *left-offset* 
 	(cl-tf:make-transform (cl-tf:make-3d-vector -0.3 0.0 0.05) (cl-tf:make-quaternion 0 0 0 1)))
 
-(defparameter *robotPoseOffset* 
+(defparameter *robot-pose-offset* 
 	(cl-tf:make-transform (cl-tf:make-3d-vector -0.3 0.0 0.0) (cl-tf:make-quaternion 0 0 0 1)))
 
-(defparameter *humanPoseOffset* 
+(defparameter *human-pose-offset* 
 	(cl-tf:make-transform (cl-tf:make-3d-vector -0.8 0.0 1.0) (cl-tf:make-quaternion 0 0 1 1)))
+;; Global variables end
 
-;;Global variables end
-
-
-;;; This function spawns the product onto the shelfs
 (defun spawn-products-one ()
-	 (btr-utils:kill-all-objects)
 	(prolog:prolog '(and (btr:bullet-world ?world)
 		(assert (btr:object ?world :mesh :my-cereal1 ((4.1 0 1.03) (0 0 1 1))
 			:mass 0 :color (1 0 0) :mesh :breakfast-cereal))))
@@ -50,7 +44,6 @@
 	(prolog:prolog '(and (btr:bullet-world ?world)
 		(assert (btr:object ?world :mesh :my-sachet3 ((4.1 -0.3 1.73) (0 0 1 1))
 			:mass 0 :color (0 0.3 0) :mesh :somat))))
-
 
 	(prolog:prolog '(and (btr:bullet-world ?world)
 		(assert (btr:object ?world :mesh :my-milk1 ((4.1 -0.55 1.4) (0 0 1 1))
@@ -72,11 +65,10 @@
 	(prolog:prolog '(and (btr:bullet-world ?world)
 		(assert (btr:object ?world :mesh :my-bar2 ((1.8 -1.4 0.77) (0 0 1 1))
 			:mass 0 :color (0.5 0 0.1) :mesh :denkmit))))
-
-	(spawn-human)
+    (spawn-human)
 	)
 
-;;; This function spawns the product onto the shelfs
+;; This function spawns the product onto the shelfs
 (defun spawn-products-two ()
 	 (btr-utils:kill-all-objects)
 	 (prolog:prolog '(and (btr:bullet-world ?world)
@@ -86,7 +78,6 @@
 		(assert (btr:object ?world :mesh :my-cereal2 ((2 -1.4 1.05) (0 0 1 1))
 			:mass 0 :color (1 0 0) :mesh :breakfast-cereal))))
 	
-
 	(prolog:prolog '(and (btr:bullet-world ?world)
 		(assert (btr:object ?world :mesh :my-sachet1 ((4.1 -0.55 1.03) (0 0 1 1))
 			:mass 0 :color (0 0.3 0) :mesh :somat))))
@@ -96,7 +87,6 @@
 	(prolog:prolog '(and (btr:bullet-world ?world)
 		(assert (btr:object ?world :mesh :my-sachet3 ((4.1 -0.3 1.73) (0 0 1 1))
 			:mass 0 :color (0 0.3 0) :mesh :somat))))
-
 
 	(prolog:prolog '(and (btr:bullet-world ?world)
 		(assert (btr:object ?world :mesh :my-milk1 ((4.1 -0.55 1.4) (0 0 1 1))
@@ -119,8 +109,7 @@
 	(spawn-human)
 	)
 
-
-;;; This function spawns the product onto the shelfs
+;; This function spawns the product onto the shelfs
 (defun spawn-products-three ()
 	 (btr-utils:kill-all-objects)
 
@@ -134,7 +123,6 @@
 		(assert (btr:object ?world :mesh :my-sachet3 ((4.1 -0.3 1.73) (0 0 1 1))
 			:mass 0 :color (0 0.3 0) :mesh :somat))))
 
-
 	(prolog:prolog '(and (btr:bullet-world ?world)
 		(assert (btr:object ?world :mesh :my-milk1 ((4.1 -0.55 1.4) (0 0 1 1))
 			:mass 0 :color (1 0 1) :mesh :milk))))
@@ -156,8 +144,7 @@
 	(spawn-human)
 	)
 
-
-;;; This function spawns the product onto the shelfs
+;; This function spawns the product onto the shelfs
 (defun spawn-products-four ()
 	 (btr-utils:kill-all-objects)
 	(prolog:prolog '(and (btr:bullet-world ?world)
@@ -179,7 +166,6 @@
 	(prolog:prolog '(and (btr:bullet-world ?world)
 		(assert (btr:object ?world :mesh :my-sachet3 ((4.05 -0.1 1.73) (0 0 1 1))
 			:mass 0 :color (0 0.3 0) :mesh :somat))))
-
 
 	(prolog:prolog '(and (btr:bullet-world ?world)
 		(assert (btr:object ?world :mesh :my-milk1 ((4.05 -0.1 1.4) (0 0 1 1))
@@ -205,8 +191,8 @@
 	(spawn-human)
 	)
 
-;; Arms function start
-(defun park-arms() ; Put the arms are a parking state
+;; Put the arms are a parking state
+(defun park-arms()
 	(cram-executive:perform
 		(desig:an action
 			(type positioning-arm)
@@ -222,13 +208,17 @@
 ;; This function repositions the robot to face the human
 (defun reposition-robot()
 	(prolog:prolog '(and (btr:bullet-world ?world)
-		(assert (btr:object-pose ?world cram-pepper-description:pepper
+		(assert (btr:object-pose ?world :JULIETTEY20MP
 			((0 0 0) (0 0 1 0)))))))
+
+;; Repositions the human avatar 
+(defun reposition-human()
+	(prolog:prolog '(and (btr:bullet-world ?world)
+                              (assert (btr:object-pose ?world :my-human ((-1 0 1) (0 0 1 1)))))))
 
 ;; This function returns a list of shelf poses
 ;; It takes the product name as an argument 
 (defun get-shelf-pose(?product-name)
-
 	(let* ((list-of-shelves 
 		(cut:force-ll (prolog `(and(is-on-shelf ,?product-name ?shelf))))) 
 		(shelf-location-list nil)
@@ -239,61 +229,39 @@
 		)
 
 	(dolist (element list-of-shelves)
-		(setf shelf-name (cdar element))
+		(setf shelf-name (cdar element)) ;;; takes the first element (?SHELF . SHELF-ONE-LEVEL-4) then the list without the fisrt SHELF-ONE-LEVEL-4
 
-		(setf shelf-btr-name (cdaar (cut:force-ll (prolog `(and(is-located-at ,shelf-name ?location))))))
+		(setf shelf-btr-name (cdaar (cut:force-ll (prolog `(and(is-located-at ,shelf-name ?location)))))) ;;; :|DM-SHELVES.shelf_1_level_4_link|
 
 		(setf shelf-pose-trans 
 			(cl-transforms:pose->transform
 			(btr:pose 
 				(find shelf-btr-name		
 					(btr:rigid-bodies (btr:get-environment-object)) :key #'btr::name :test #'equalp))))
-		(setf shelf-str (subseq (write-to-string shelf-btr-name) 10 17))
-
+		(setf shelf-str (subseq (write-to-string shelf-btr-name) 13 20))
 
 		(cond ((string-equal shelf-str "shelf_1")
 			(setf shelf-location-list (cons	
 					(cl-transforms:transform->pose
-						(cl-transforms:transform* shelf-pose-trans *shelfoneOffset*))
+						(cl-transforms:transform* shelf-pose-trans *shelf-one-offset*))
 
 				shelf-location-list)))
 
 		((string-equal shelf-str "shelf_2")	
 			(setf shelf-location-list (cons
 					(cl-transforms:transform->pose
-						(cl-transforms:transform* shelf-pose-trans *shelftwoOffset*))
+						(cl-transforms:transform* shelf-pose-trans *shelf-two-offset*))
 
 				shelf-location-list))
 			)))
 
 	shelf-location-list))
 
-;; This function generates the a possible location from which
-;; the robot can see the product.
-;; It takes the product name as an argument
-(defun generate-robot-pose(?shelf-pose)
-	(let* ((?product-pose ?shelf-pose)
-		(?product-pose-stamped (cl-transforms-stamped:pose->pose-stamped "map" 0 ?product-pose))
-		(?product-location-designator (desig:a location (pose ?product-pose-stamped)))
-		(to-see-designator (desig:a location (visible-for pepper)
-			(location ?product-location-designator)
-			(object (desig:an object (type :shelf)))))) ; This line was needed for the location generation to work. 
-	(desig:reference to-see-designator)))
-
-;; This function moves the robot to a given pose
-(defun move-to-location(?pose)
-	(let ((?navigation-goal ?pose))
-		(perform (desig:an action
-			(type going)
-			(target (desig:a location 
-				(pose ?navigation-goal)))))))
-
-
 ;; This function finds a product based on the name
-;; It tries to look for the product from different direction on a shelf 
+;; It tries to look for the product from a different direction on a shelf 
 ;; It also handles failures accordingly
 (defun find-product (?product-name ?product-pose)
-	
+ 
 	(generate-look-directions ?product-pose)
 
 	(let* ((?object-type (get-product-type ?product-name))
@@ -322,10 +290,8 @@
            	(move-to-location (calculate-robot-navigation-goal-towards-target ?looking-direction))
            	(look-at-product ?looking-direction)
 
-
            	(cpl:retry))
            (return)))
-
 
 		(cram-executive:perform
 			(desig:an action
@@ -334,60 +300,15 @@
 					(type ?object-type)))))
 		)))
 
-
-;; This function generates possible looking directions for the robot
-(defun generate-look-directions (?product-pose)
-	(setf *look-center* (cl-transforms-stamped:pose->pose-stamped "map" 0  ?product-pose))
-	(setf *look-right* (get-right-pose ?product-pose))
-	(setf *look-left* (get-left-pose ?product-pose)))
-
-;; This function generates the left possible looking direction
-;; It takes the product name as an argument
-(defun get-left-pose(?product-pose)
-	(let* ((mapTshelf-pose ?product-pose)
-		(mapTshelf-trans (cl-transforms:pose->transform mapTshelf-pose)))
-
-	(cl-transforms-stamped:pose->pose-stamped "map" 0 
-		(cl-transforms:transform->pose
-			(cl-transforms:transform* mapTshelf-trans *left-offset*)))))
-
-;; This function generates the right possible looking direction
-;; It takes the product name as an argument
-(defun get-right-pose(?product-pose)
-	(let* ((mapTshelf-pose ?product-pose)
-		(mapTshelf-trans (cl-transforms:pose->transform mapTshelf-pose)))
-	(cl-transforms-stamped:pose->pose-stamped "map" 0 
-		(cl-transforms:transform->pose
-			(cl-transforms:transform* mapTshelf-trans *right-offset*)))))
-
-;; This function queries our reasoning base and returns the type of 
-;; product based on the name
-(defun get-product-type(?product-name)
-	(cdaar (cut:force-ll (prolog `(and(is-of-type ,?product-name ?type))))))
-
-
-;; This function helps the robot to look at the given
-;; location.
-(defun look-at-product (?product-direction)
-	(cpl:with-retry-counters ((error-counter 2))
-		(cpl:with-failure-handling
-
-			((cram-common-failures:ptu-goal-not-reached (e)
-	       ; (print e)
-
-	       (roslisp:ros-warn (perception-failure) "~a~%Looking at product went wrong...repositioning" e)
-	       (cpl:do-retry error-counter
-
-	       	(move-to-location (get-robot-new-pose))
-
-	       	(cpl:retry))
-	       (cpl:fail 'common-fail:looking-high-level-failure)))
-
-
-			(cram-executive:perform (desig:a action 
-				(type looking)
-				(target (desig:a location
-					(pose ?product-direction))))))))
+;; This function generates the a possible location from which
+;; the robot can see the product.
+(defun generate-robot-pose(?shelf-pose)
+    (let* ((?product-pose ?shelf-pose)
+        (?product-pose-stamped (cl-transforms-stamped:pose->pose-stamped "map" 0 ?product-pose))
+        (?product-location-designator (desig:a location (pose ?product-pose-stamped)))
+        (to-see-designator (desig:a location (visible-for :JULIETTEY20MP)
+            (location ?product-location-designator))))
+    (desig:reference to-see-designator)))
 
 ;; This function generates and returns a new robot position based 
 ;; on its current position. It multiplies the current position of
@@ -395,16 +316,31 @@
 (defun get-robot-new-pose()
 	(let* ((robot-cur-pose (cram-tf:robot-current-pose))
 		(robot-cur-trans (cl-transforms:pose->transform robot-cur-pose)))
+ 
 	(cl-transforms-stamped:pose->pose-stamped "map" 0 
 		(cl-transforms:transform->pose
-			(cl-transforms:transform* robot-cur-trans  *robotPoseOffset*)))))
+			(cl-transforms:transform* robot-cur-trans  *robot-pose-offset*)))))
 
+;; This function generates and returns a new human position based 
+;; on the robots position. It multiplies the current position of the robot
+;; by an offset
+(defun get-human-new-pose()
+	(let* ((robot-cur-pose (cram-tf:robot-current-pose))
+		(robot-cur-trans (cl-transforms:pose->transform robot-cur-pose)))
+	(cl-transforms-stamped:pose->pose-stamped "map" 0 
+		(cl-transforms:transform->pose
+			(cl-transforms:transform* robot-cur-trans  *human-pose-offset*)))))
 
-;;"Given a `look-pose-stamped' and a `robot-pose-stamped' (both in fixed frame),
+(defun calculate-robot-navigation-goal-towards-target (?location-pose)
+	(calculate-pose-towards-target
+		?location-pose
+		(cram-tf:robot-current-pose)))
+
+;; Given a `look-pose-stamped' and a `robot-pose-stamped' (both in fixed frame),
 ;; calculate the new robot-pose-stamped, which is rotated with an angle to point towards
-;; the `look-pose-stamped'."
+;; the `look-pose-stamped'
 (defun calculate-pose-towards-target (look-pose-stamped robot-pose-stamped)
-	
+ 
 	(let* ((world->robot-transform
 		(cram-tf:pose-stamped->transform-stamped robot-pose-stamped "robot"))
 	(robot->world-transform
@@ -421,35 +357,73 @@
 			(cl-transforms:x look-pose-in-robot-frame))))
 	(cram-tf:rotate-pose robot-pose-stamped :z rotation-angle)))
 
-(defun calculate-robot-navigation-goal-towards-target (?location-pose)
-	(calculate-pose-towards-target
-		?location-pose
-		(cram-tf:robot-current-pose)))
+;; This function generates the left possible looking direction
+;; It takes the product pose as an argument
+(defun get-left-pose(?product-pose)
+	(let* ((mapTshelf-pose ?product-pose)
+		(mapTshelf-trans (cl-transforms:pose->transform mapTshelf-pose)))
+	(cl-transforms-stamped:pose->pose-stamped "map" 0 
+		(cl-transforms:transform->pose
+			(cl-transforms:transform* mapTshelf-trans *left-offset*)))))
 
+;; This function generates the right possible looking direction
+;; It takes the product pose as an argument
+(defun get-right-pose(?product-pose)
+	(let* ((mapTshelf-pose ?product-pose)
+		(mapTshelf-trans (cl-transforms:pose->transform mapTshelf-pose)))
+	(cl-transforms-stamped:pose->pose-stamped "map" 0 
+		(cl-transforms:transform->pose
+			(cl-transforms:transform* mapTshelf-trans *right-offset*)))))
 
-(defun point-front-right() ; Point forward using the right arm
-	(cram-executive:perform
-		(desig:an action
-			(type positioning-arm)
-			(left-configuration park)
-			(right-configuration point-ahead))))
+;; This function generates possible looking directions for the robot
+(defun generate-look-directions (?product-pose)
+	(setf *look-center* (cl-transforms-stamped:pose->pose-stamped "map" 0  ?product-pose))
+	(setf *look-right* (get-right-pose ?product-pose))
+	(setf *look-left* (get-left-pose ?product-pose)))
+
+;; This function queries our reasoning base and returns the type of 
+;; product based on the name
+(defun get-product-type(?product-name)
+	(cdaar (cut:force-ll (prolog `(and(is-of-type ,?product-name ?type))))))
+
+;; This function helps the robot to look at the given
+;; location.
+(defun look-at-product (?product-direction)
+	(cpl:with-retry-counters ((error-counter 2))
+		(cpl:with-failure-handling
+ 
+		  ((cram-common-failures:ptu-goal-not-reached (e)
+ 
+	       	(roslisp:ros-warn (perception-failure) "~a~%Looking at product went wrong...repositioning" e)
+	       	(cpl:do-retry error-counter
+ 
+	    	  (move-to-location (get-robot-new-pose))
+	    	  (cpl:retry))
+
+	       (cpl:fail 'common-fail:looking-high-level-failure)))
+ 
+			(cram-executive:perform (desig:a action 
+				(type looking)
+				(target (desig:a location
+					(pose ?product-direction))))))))
+
+;; This function moves the robot to a given pose
+(defun move-to-location(?pose)
+	(let ((?navigation-goal ?pose))
+		(cram-executive:perform (desig:an action
+			(type going)
+			(target (desig:a location 
+				(pose ?navigation-goal)))))))
 
 ;; This function moves the robot to a new position
 (defun move-human-to-location()
 	(let* ((?new-human-location (get-human-new-pose)))
 		(setf (btr:pose (btr:object btr:*current-bullet-world* :my-human)) ?new-human-location)))
 
-;; This function generates and returns a new human position based 
-;; on the robots position. It multiplies the current position of the robot
-;; by an offset
-(defun get-human-new-pose()
-	(let* ((robot-cur-pose (cram-tf:robot-current-pose))
-		(robot-cur-trans (cl-transforms:pose->transform robot-cur-pose)))
-	(cl-transforms-stamped:pose->pose-stamped "map" 0 
-		(cl-transforms:transform->pose
-			(cl-transforms:transform* robot-cur-trans  *humanPoseOffset*)))))
-
-;;Repositions the human avatar 
-(defun reposition-human()
-	(prolog:prolog '(and (btr:bullet-world ?world)
-                              (assert (btr:object-pose ?world :my-human ((-1 0 1) (0 0 1 1)))))))
+;; Point forward using the right arm
+(defun point-front-right()
+	(cram-executive:perform
+		(desig:an action
+			(type positioning-arm)
+			(left-configuration park)
+			(right-configuration point-ahead))))

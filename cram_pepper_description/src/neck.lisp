@@ -19,22 +19,22 @@
                                  robot-joint-states
                                  camera-in-neck-ee-pose)
 
-  (<- (robot-neck-links pepper
+  (<- (robot-neck-links :JULIETTEY20MP
                         "Neck"
                         "Head"))
 
-  (<- (robot-neck-joints pepper
+  (<- (robot-neck-joints :JULIETTEY20MP
                          "HeadYaw"
                          "HeadPitch"))
 
-  (<- (robot-joint-states pepper :neck ?there-is-only-one-neck :away ?joint-states)
+  (<- (robot-joint-states :JULIETTEY20MP :neck ?there-is-only-one-neck :away ?joint-states)
     (symbol-value *neck-parking-joint-states* ?joint-states))
 
-  (<- (robot-joint-states pepper :neck ?there-is-only-one-neck :forward ?joint-states)
+  (<- (robot-joint-states :JULIETTEY20MP :neck ?there-is-only-one-neck :forward ?joint-states)
     (symbol-value *neck-parking-joint-states* ?joint-states))
 
-  (<- (robot-joint-states pepper :neck ?there-is-only-one-neck :down ?joint-states)
+  (<- (robot-joint-states :JULIETTEY20MP :neck ?there-is-only-one-neck :down ?joint-states)
     (symbol-value *neck-good-looking-down-state* ?joint-states))
 
-  (<- (robot-joint-states pepper :neck ?there-is-only-one-neck :down-left ?joint-states)
+  (<- (robot-joint-states :JULIETTEY20MP :neck ?there-is-only-one-neck :down-left ?joint-states)
     (symbol-value *neck-good-looking-left-state* ?joint-states)))
