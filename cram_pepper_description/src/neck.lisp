@@ -14,10 +14,10 @@
 
 
 (def-fact-group pepper-neck-facts (robot-neck-links
-                                 robot-neck-joints
-                                 robot-neck-base-link
-                                 robot-joint-states
-                                 camera-in-neck-ee-pose)
+                                  robot-neck-joints
+                                  robot-neck-base-link
+                                  robot-joint-states
+                                  camera-in-neck-ee-pose)
 
   (<- (robot-neck-links :JULIETTEY20MP
                         "Neck"

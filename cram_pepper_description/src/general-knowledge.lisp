@@ -1,12 +1,12 @@
 (in-package :pepper-descr)
 
 (def-fact-group pepper-metadata (robot
-                               robot-odom-frame
-                               robot-base-frame robot-torso-link-joint
-                               arm
-                               camera-frame
-                               camera-minimal-height
-                               camera-maximal-height)
+                                robot-odom-frame
+                                robot-base-frame robot-torso-link-joint
+                                arm
+                                camera-frame
+                                camera-minimal-height
+                                camera-maximal-height)
   (<- (robot :JULIETTEY20MP))
 
   (<- (robot-odom-frame :JULIETTEY20MP "odom"))

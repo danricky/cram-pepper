@@ -40,12 +40,12 @@
 
 
 (def-fact-group pepper-arm-facts (end-effector-link
-                                robot-tool-frame
-                                arm-joints arm-links
-                                gripper-joint gripper-link
-                                gripper-meter-to-joint-multiplier
-                                standard-to-particular-gripper-transform
-                                robot-joint-states)
+                                  robot-tool-frame
+                                  arm-joints arm-links
+                                  gripper-joint gripper-link
+                                  gripper-meter-to-joint-multiplier
+                                  standard-to-particular-gripper-transform
+                                  robot-joint-states)
 
   (<- (end-effector-link :JULIETTEY20MP :left "LThumb1_link"))
   (<- (end-effector-link :JULIETTEY20MP :right "RThumb1_link"))
