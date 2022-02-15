@@ -96,14 +96,10 @@ Next, we are going to adjust the values in the **package.xml** file. Here we wan
 Next, we edit the **CMakeList.txt** file. Here we need to tell catkin which other packages are required for building our package. Add the same list of packages from the package.xml file to the find_package section of the CmakeList.txt file. It should look like the sample below.
 
 ```
-find_package(catkin REQUIRED COMPONENTS
-  urdf
-  controller_manager
-  joint_state_controller(prolog:prolog '(and (btr:bullet-world ?world)
-                              (ass(prolog:prolog '(and (btr:bullet-world ?world)
-                              (assert (btr:object-pose ?world :JULIETTEY20MP
-                                                       ((2 0 0) (0 0 0 1))))))
-)
+cmake_minimum_required(VERSION 2.8.3)
+project(cram_pepper_description)
+find_package(catkin REQUIRED)
+catkin_package()
 ```
 
 Rename the file “PATH-TO-YOUR-WORKSPACE/src/iai_maps/iai_maps/maps/map-2017-11-ease-demo.pgm” to “PATH-TO-YOUR-WORKSPACE/ros/src/iai_maps/iai_maps/maps/map-2017-11-ease-demo-old.pgm”. Download the file “map-2017-11-ease-demo.pgm” from [here](https://github.com/danricky/cram-pepper/raw/master/map-2017-11-ease-demo.pgm) and replace the old file with this new one. Here we are replacing the default map with our map.
